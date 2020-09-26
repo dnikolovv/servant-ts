@@ -20,26 +20,27 @@ import ServantTS.Output.RequestFlavors.Fetch (Fetch)
 import Dhall hiding (sequence)
 
 
-data Example =
-  Example
-    {decFile  :: Text
-    ,funcFile :: Text
-    } deriving (Generic, Inject)
-
-instance Interpret Example
+--data Example =
+--  Example
+--    {decFile  :: Text
+--    ,funcFile :: Text
+--    } deriving (Generic, Inject)
+--
+--instance Interpret Example
 
 main :: IO ()
 main = do
-  f <- (input auto "./mkdocs/README.md.template") :: IO (Example -> Text)
-  writeFile "../README.md" $ T.unpack (f config)
-  print "FINISHED WRITING FILE"
-  print $ f config
- where
-  asTS         = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
-  reqToTSFunction = defaultReqToTSFunction (Proxy @Fetch)
-  config = Example
-       {decFile = T.pack $ show (apiToTypeDeclarationDoc asTS)
-       ,funcFile = T.pack $ show (apiToFunctionDoc asTS reqToTSFunction)
-       }
-
+  print "Hello there."
+--  f <- (input auto "./mkdocs/README.md.template") :: IO (Example -> Text)
+--  writeFile "../README.md" $ T.unpack (f config)
+--  print "FINISHED WRITING FILE"
+--  print $ f config
+-- where
+--  asTS         = servantToReqTS (Proxy :: Proxy FpTs) (Proxy :: Proxy SimpleAPI)
+--  reqToTSFunction = defaultReqToTSFunction (Proxy @Fetch)
+--  config = Example
+--       {decFile = T.pack $ show (apiToTypeDeclarationDoc asTS)
+--       ,funcFile = T.pack $ show (apiToFunctionDoc asTS reqToTSFunction)
+--       }
+--
 
